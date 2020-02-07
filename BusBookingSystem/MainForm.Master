@@ -1,0 +1,46 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainForm.Master.cs" Inherits="BusBookingSystem.MainForm" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Buz-e</title>
+    <style>
+        .FormPage{
+            background-color:aqua;
+            position: center;
+            width:100vw;
+            height:50px;
+        }
+        .Bus {
+            background-image: url('busExtend.jpg');
+            background-repeat: no-repeat;
+            background-position:center;
+            width: 100vw;
+            height: 250px;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div id="title" class="FormPage">
+                Buz-e
+                <span style="margin-left:1500px" >
+                    <asp:Button ID="Home" runat="server" Text="Home" OnClick="Home_Click" BackColor="aqua" BorderWidth="0" Width="60px" style="height:50px"/>
+                    &nbsp;
+                    <asp:Button ID="Login" runat="server" Text="Login" BackColor="aqua" BorderWidth="0" OnClick="Login_Click" Width="60px" style="height:50px"/>
+                    &nbsp;
+                    <asp:Button ID="Register" runat="server" Text="Register" BackColor="aqua" BorderWidth="0" OnClick="Register_Click" Width="60px" style="height:50px"/>
+                    &nbsp;
+                    <asp:Button ID="Book" runat="server" Text="Book" BackColor="aqua" BorderWidth="0" OnClick="Book_Click" Width="60px" style="height:50px"/>
+                </span>
+            </div>
+            <asp:ContentPlaceHolder ID="mainForm" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
