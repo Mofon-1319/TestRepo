@@ -3,8 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         table {
-            background-image: url('png_bus.png');
-            background-repeat: no-repeat;
+            background-color:;
             height: 80px;
             width: 340px;
         }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
-
 namespace BusApp
 {
     interface iCustomerRepository
@@ -117,15 +116,41 @@ namespace BusApp
             {
                 sqlConnection.Open();
 
-                string idQuery = "SP_SignUp";
+                string idQuery = "SP_DeleteDetails";
                 SqlCommand sqlCommand = new SqlCommand(idQuery, sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter();
-                para.ParameterName = "@UserId";
+                para.ParameterName = "@Id";
                 para.Value = id;
                 para.SqlDbType = SqlDbType.Int;
                 sqlCommand.Parameters.Add(para);
+                int rows = sqlCommand.ExecuteNonQuery();
+            }
+        }
+
+        public void UpdateDetail(int id, Bus bus)
+        {
+            using (SqlConnection sqlConnection = Connection.GetDBConnection())
+            {
+                sqlConnection.Open();
+
+                string idQuery = "SP_UpdateDetails";
+                SqlCommand sqlCommand = new SqlCommand(idQuery, sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter para = new SqlParameter();
+                para.ParameterName = "@Id";
+                para.Value = id;
+                para.SqlDbType = SqlDbType.Int;
+                sqlCommand.Parameters.Add(para);
+                sqlCommand.Parameters.AddWithValue("@BusType", bus.BusType);
+                sqlCommand.Parameters.AddWithValue("@ATime", bus.arrivalTime);
+                sqlCommand.Parameters.AddWithValue("@DTime", bus.departureTime);
+                sqlCommand.Parameters.AddWithValue("@Destination", bus.destination);
+                sqlCommand.Parameters.AddWithValue("@Fare", bus.rate);
+                sqlCommand.Parameters.AddWithValue("@Seats", bus.seats);
+                sqlCommand.Parameters.AddWithValue("@Source", bus.source);
                 int rows = sqlCommand.ExecuteNonQuery();
             }
         }
