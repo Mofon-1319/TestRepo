@@ -102,12 +102,31 @@ namespace BusApp
             using (SqlConnection sqlConnection = Connection.GetDBConnection())
             {
                 sqlConnection.Open();
-                string sql = "SP_Select";
+                string sql = "SP_Bus";
                 SqlCommand command = new SqlCommand(sql, sqlConnection);
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 return dataTable;
+            }
+        }
+
+        public void DeleteDetail(int id)
+        {
+            using (SqlConnection sqlConnection = Connection.GetDBConnection())
+            {
+                sqlConnection.Open();
+
+                string idQuery = "SP_SignUp";
+                SqlCommand sqlCommand = new SqlCommand(idQuery, sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter para = new SqlParameter();
+                para.ParameterName = "@UserId";
+                para.Value = id;
+                para.SqlDbType = SqlDbType.Int;
+                sqlCommand.Parameters.Add(para);
+                int rows = sqlCommand.ExecuteNonQuery();
             }
         }
     }

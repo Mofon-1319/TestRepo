@@ -1,5 +1,6 @@
 ﻿using System;
 using BusApp;
+using System.Data;
 
 namespace BusBookingSystem
 {
@@ -8,7 +9,9 @@ namespace BusBookingSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             CustomerRepository user = new CustomerRepository();
-            user.BookBus();
+            DataTable data = user.BookBus();
+            Grid.DataSource = data;
+            Grid.DataBind();
         }
     }
 }
