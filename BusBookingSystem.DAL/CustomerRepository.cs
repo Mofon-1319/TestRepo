@@ -1,16 +1,16 @@
-﻿using System;
+﻿using BusBookingSystem.Entity;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace BusApp
+namespace BusBookingSystem.DAL
 {
     interface iCustomerRepository
     {
         int LogIn(Customer customer);
         int SignUp(Customer customer);
     }
-    class CustomerRepository : iCustomerRepository
+    public class CustomerRepository : iCustomerRepository
     {
         public int SignUp(Customer customer)
         {
@@ -58,9 +58,7 @@ namespace BusApp
                 para.SqlDbType = SqlDbType.VarChar;
                 sqlCommand.Parameters.Add(para);
 
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-                sqlDataAdapter.InsertCommand = sqlCommand;
-                int retRows = sqlDataAdapter.InsertCommand.ExecuteNonQuery();
+                int retRows = sqlCommand.ExecuteNonQuery();
 
                 return retRows;
             }
@@ -80,7 +78,7 @@ namespace BusApp
                 dataAdapter.Fill(dataSet, "SignUp");
                 foreach (DataRow i in dataSet.Tables["SignUp"].Rows)
                 {
-                    Customer user = new Customer(i[3].ToString(), i[4].ToString());
+                    Customer user = new Customer(i[4].ToString(), i[5].ToString());
                     userList.Add(user);
                 }
             }
@@ -139,11 +137,29 @@ namespace BusApp
                 SqlCommand sqlCommand = new SqlCommand(idQuery, sqlConnection);
                 sqlCommand.CommandType = CommandType.StoredProcedure;
 
+                sqlCommand.Parameters.AddWithValue("@Id", id);
+                sqlCommand.Parameters.AddWithValue("@BusType", bus.BusType);
+                sqlCommand.Parameters.AddWithValue("@ATime", bus.arrivalTime);
+                sqlCommand.Parameters.AddWithValue("@DTime", bus.departureTime);
+                sqlCommand.Parameters.AddWithValue("@Destination", bus.destination);
+                sqlCommand.Parameters.AddWithValue("@Fare", bus.rate);
+                sqlCommand.Parameters.AddWithValue("@Seats", bus.seats);
+                sqlCommand.Parameters.AddWithValue("@Source", bus.source);
+                int rows = sqlCommand.ExecuteNonQuery();
+            }
+        }
+
+        public void InsertDetail(Bus bus)
+        {
+            using (SqlConnection sqlConnection = Connection.GetDBConnection())
+            {
+                sqlConnection.Open();
+
+                string idQuery = "SP_InsertDetails";
+                SqlCommand sqlCommand = new SqlCommand(idQuery, sqlConnection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
                 SqlParameter para = new SqlParameter();
-                para.ParameterName = "@Id";
-                para.Value = id;
-                para.SqlDbType = SqlDbType.Int;
-                sqlCommand.Parameters.Add(para);
                 sqlCommand.Parameters.AddWithValue("@BusType", bus.BusType);
                 sqlCommand.Parameters.AddWithValue("@ATime", bus.arrivalTime);
                 sqlCommand.Parameters.AddWithValue("@DTime", bus.departureTime);

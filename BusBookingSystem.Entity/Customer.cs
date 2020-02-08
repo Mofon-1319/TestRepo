@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace BusApp
+namespace BusBookingSystem.Entity
 {
-    class Customer
+    public class Customer
     {
         public string userName { get; set; }
         public string userGender { get; set; }

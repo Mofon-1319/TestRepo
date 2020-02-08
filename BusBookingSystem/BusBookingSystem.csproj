@@ -124,10 +124,6 @@
     <Compile Include="BookBus.aspx.designer.cs">
       <DependentUpon>BookBus.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bus.cs" />
-    <Compile Include="Connection.cs" />
-    <Compile Include="Customer.cs" />
-    <Compile Include="CustomerRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,6 +160,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusBookingSystem.DAL\BusBookingSystem.DAL.csproj">
+      <Project>{6c1c39cb-68cc-44a3-9e53-4700add3de1d}</Project>
+      <Name>BusBookingSystem.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusBookingSystem.Entity\BusBookingSystem.Entity.csproj">
+      <Project>{6dc6d145-c8ca-47d6-ba90-10ebaa3759a4}</Project>
+      <Name>BusBookingSystem.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

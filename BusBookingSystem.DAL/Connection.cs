@@ -1,14 +1,13 @@
 ﻿using System.Configuration;
 using System.Data.SqlClient;
-using System;
 
-namespace BusApp
+namespace BusBookingSystem.DAL
 {
     class Connection
     {
         public static SqlConnection GetDBConnection()
         {
-            string connectionString = @"Data Source=DESKTOP-RLL3JF9\SQLEXPRESS;Initial Catalog=BusBookingSystem;Integrated Security=SSPI";
+            string connectionString = ConfigurationManager.ConnectionStrings["DBCon"].ConnectionString;
             SqlConnection sqlConnection = new SqlConnection(connectionString);
             return sqlConnection;
         }

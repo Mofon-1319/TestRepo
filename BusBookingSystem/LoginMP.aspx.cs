@@ -1,5 +1,6 @@
-﻿using System;
-using BusApp;
+﻿using BusBookingSystem.DAL;
+using BusBookingSystem.Entity;
+using System;
 
 namespace BusBookingSystem
 {
@@ -7,7 +8,8 @@ namespace BusBookingSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string script = "window.onload = function(){ alert('Registered successfully.')};";
+            ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
         }
 
         protected void loginButton_Click(object sender, EventArgs e)
@@ -16,9 +18,14 @@ namespace BusBookingSystem
             CustomerRepository customerRepository = new CustomerRepository();
             int count = customerRepository.LogIn(customer);
             if (count == 1)
-                Response.Write("Logged in successfully");
+            {
+                Response.Redirect("BookBus.aspx");
+            }
             else
-                Response.Write("in valid");
+            {
+                string script = "window.onload = function(){ alert('Invalid account.')};";
+                ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
+            }
         }
     }
 }

@@ -25,7 +25,7 @@
         <tr class="text">
             <td style="color:crimson; font-size:x-large">Password</td>
             <td>&nbsp;
-                    <asp:TextBox ID="password" runat="server" Placeholder="Enter Password" Height="29px" Width="180px"></asp:TextBox>
+                    <asp:TextBox ID="password" TextMode="Password" runat="server" Placeholder="Enter Password" Height="29px" Width="180px"></asp:TextBox>
             </td>
         </tr>
         <tr>

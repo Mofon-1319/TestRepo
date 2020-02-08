@@ -44,8 +44,7 @@
                     &nbsp;
                     <asp:Button ID="Register" runat="server" Text="Register" BackColor="aqua" BorderWidth="0" OnClick="Register_Click" Width="60px" style="height:50px"/>
                     &nbsp;
-                    <asp:Button ID="Book" runat="server" Text="Book" BackColor="aqua" BorderWidth="0" OnClick="Book_Click" Width="60px" style="height:50px"/>
-                </span>
+                    </span>
             </div>
             <asp:ContentPlaceHolder ID="mainForm" runat="server">
             </asp:ContentPlaceHolder>

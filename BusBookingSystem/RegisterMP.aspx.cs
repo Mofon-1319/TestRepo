@@ -1,5 +1,6 @@
-﻿using System;
-using BusApp;
+﻿using BusBookingSystem.DAL;
+using BusBookingSystem.Entity;
+using System;
 
 namespace BusBookingSystem
 {
@@ -16,9 +17,14 @@ namespace BusBookingSystem
             CustomerRepository customerRepository = new CustomerRepository();
             int count = customerRepository.SignUp(customer);
             if (count > 1)
-                Response.Write("Registration success");
+            {
+                Response.Redirect("LoginMP.aspx");
+            }
             else
-                Response.Write("in valid");
+            {
+                string script = "window.onload = function(){ alert('Invalid account.')};";
+                ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
+            }
         }
     }
 }
