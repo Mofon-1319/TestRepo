@@ -1,0 +1,59 @@
+﻿body {
+    background: white none repeat scroll 0 0;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    color: black;
+    width: 100%;
+    background-color: #98B3F6;
+}
+
+#header {
+    background-color: aqua;
+    margin: 0px 0px 0px 0px;
+    height: 50px;
+    overflow: hidden;
+    width: 100vw;
+}
+
+.Bus {
+            background-image: url('fullbus.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100vw;
+            height: 250px;
+        }
+
+#Content {
+    padding-top: 1em;
+    background-color: White;
+    overflow: hidden;
+}
+.Bus {
+            background-image: url('fullbus.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 100vw;
+            height: 250px;
+        }
+#Footer {
+    clear: both;
+    background-color: #62645C;
+    padding-bottom: 1em;
+    border-top: 1px solid #333;
+}
+.Menu li
+{
+  display:inline;
+  margin:0px;
+  padding:2px;
+}
+
+.Menu  a
+{
+  text-decoration:none;
+  background-color:Blue;
+  padding:5px;
+  color:White;
+  margin:0px;
+  border-left:none;
+}
+

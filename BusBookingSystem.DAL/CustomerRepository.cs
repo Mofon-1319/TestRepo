@@ -36,7 +36,7 @@ namespace BusBookingSystem.DAL
 
                 para = new SqlParameter();
                 para.ParameterName = "@Sex";
-                para.Value = customer.userName;
+                para.Value = customer.userGender;
                 para.SqlDbType = SqlDbType.VarChar;
                 sqlCommand.Parameters.Add(para);
 

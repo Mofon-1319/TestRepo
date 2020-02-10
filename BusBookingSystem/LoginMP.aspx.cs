@@ -8,8 +8,6 @@ namespace BusBookingSystem
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string script = "window.onload = function(){ alert('Registered successfully.')};";
-            ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
         }
 
         protected void loginButton_Click(object sender, EventArgs e)
@@ -17,7 +15,7 @@ namespace BusBookingSystem
             Customer customer = new Customer(userId.Text, password.Text);
             CustomerRepository customerRepository = new CustomerRepository();
             int count = customerRepository.LogIn(customer);
-            if (count == 1)
+            if (count >= 1)
             {
                 Response.Redirect("BookBus.aspx");
             }

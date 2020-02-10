@@ -6,49 +6,81 @@
 <head runat="server">
     <title>Buz-e</title>
     <style>
-        .FormPage{
-            background-color:aqua;
+        /*body {
+            background: white none repeat scroll 0 0;
+            color: burlywood;
+            font-family: Verdana,Lucida Grande,Lucida Sans Regular,Lucida Sans Unicode,Arial,sans-serif;
+            font-size: 12px;
+            margin: 0px;
+            padding: 0px;
+        }*/
+
+        /*.FormPage {
+            background-image: url('img01.gif');
+            width: 100%;
             position: center;
-            width:100vw;
-            height:50px;
-        }
-        .Bus {
-            background-image: url('busExtend.jpg');
+            height: 51px;
+        }*/
+
+        /*.Bus {
+            background-image: url('fullbus.jpg');
             background-repeat: no-repeat;
-            background-position:center;
+            background-position: center;
             width: 100vw;
             height: 250px;
         }
-        a:link{
-  background-color: white;
-  color: black;
-  border: 2px solid green;
-  padding: 10px 15px;
-  text-align: center;
-  text-decoration:none;
-  display:inline-block;
-}
+
+        a:link {
+            border-top: 1px solid;
+            color: aqua;
+            padding: 10px 15px;
+            border: 2px solid green;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .main {
+            width: 100%;
+        }
+
+        #header {
+            background-image: url('img01.gif');
+            margin: 10px 10px 0px 10px;
+            height: 120px;
+            overflow: hidden;
+            width: 100vw;
+        }*/
     </style>
+    <link rel="stylesheet" href="StyleSheet.css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" class="main">
         <div>
-            <div id="title" class="FormPage">
-                Buz-e
-                <span style="margin-left:1500px" >
-                    <asp:Button ID="Home" runat="server" Text="Home" OnClick="Home_Click" BackColor="aqua" BorderWidth="0" Width="60px" style="height:50px"/>
-                    &nbsp;
-                    <asp:Button ID="Login" runat="server" Text="Login" BackColor="aqua" BorderWidth="0" OnClick="Login_Click" Width="60px" style="height:50px"/>
-                    &nbsp;
-                    <asp:Button ID="Register" runat="server" Text="Register" BackColor="aqua" BorderWidth="0" OnClick="Register_Click" Width="60px" style="height:50px"/>
-                    &nbsp;
-                    </span>
-            </div>
+            <%--<div id="title" class="FormPage">
+                <asp:HyperLink ID="Home" runat="server" Text="Home" NavigateUrl="~/Home.aspx"></asp:HyperLink>
+                &nbsp;
+                    <asp:HyperLink ID="Login" runat="server" Text="Login" NavigateUrl="~/LoginMP.aspx" />
+                &nbsp;
+                    <asp:HyperLink ID="Register" runat="server" Text="Register" NavigateUrl="~/RegisterMP.aspx" />
+                &nbsp;
+            </div>--%>
+                <div id = "Container">
+<div id ="Container">
+<div id="header">
+    <ul class ="Menu">
+<li><a href ="Home.aspx">Home</a></li>
+<li><a href ="LoginMP.aspx">Login</a></li>
+<li><a href ="RegisterMP.aspx">Register</a></li>
+</ul>
+</div>
+</div>
             <asp:ContentPlaceHolder ID="mainForm" runat="server">
             </asp:ContentPlaceHolder>
         </div>
     </form>
+    <div class="Footer">
+    </div>
 </body>
 </html>
